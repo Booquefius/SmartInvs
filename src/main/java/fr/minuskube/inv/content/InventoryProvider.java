@@ -6,5 +6,5 @@ public interface InventoryProvider {
 
     void init(Player player, InventoryContents contents);
     default void update(Player player, InventoryContents contents) {}
-
+    default void close(Player player) {}
 }
