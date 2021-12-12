@@ -224,6 +224,12 @@ public class InventoryManager {
                     .filter(listener -> listener.getType() == InventoryCloseEvent.class)
                     .forEach(listener -> ((InventoryListener<InventoryCloseEvent>) listener).accept(e));
 
+            new BukkitRunnable() {
+                @Override public void run() {
+                    inventories.get(p.getUniqueId()).close(p);
+                }
+            }.runTaskLaterAsynchronously(SmartInvsPlugin.instance(), 1L);
+            
             if (inv.isCloseable()) {
                 e.getInventory().clear();
 
