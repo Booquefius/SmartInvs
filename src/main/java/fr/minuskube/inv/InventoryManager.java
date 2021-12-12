@@ -220,15 +220,10 @@ public class InventoryManager {
 
             SmartInventory inv = inventories.get(p.getUniqueId());
 
+
             inv.getListeners().stream()
                     .filter(listener -> listener.getType() == InventoryCloseEvent.class)
                     .forEach(listener -> ((InventoryListener<InventoryCloseEvent>) listener).accept(e));
-
-            new BukkitRunnable() {
-                @Override public void run() {
-                    inventories.get(p.getUniqueId()).getProvider().close(p);
-                }
-            }.runTask(plugin);
 
             if (inv.isCloseable()) {
                 e.getInventory().clear();
@@ -237,6 +232,8 @@ public class InventoryManager {
                 contents.remove(p.getUniqueId());
             } else
                 Bukkit.getScheduler().runTask(plugin, () -> p.openInventory(e.getInventory()));
+
+            inv.getProvider().close(p);
         }
 
         @EventHandler(priority = EventPriority.LOW)
