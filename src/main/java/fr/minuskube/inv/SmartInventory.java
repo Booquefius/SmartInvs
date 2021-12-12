@@ -78,12 +78,12 @@ public class SmartInventory {
                 .forEach(listener -> ((InventoryListener<InventoryCloseEvent>) listener)
                         .accept(new InventoryCloseEvent(player.getOpenInventory())));
 
-        this.provider.close(player);
-
         this.manager.setInventory(player, null);
         player.closeInventory();
 
         this.manager.setContents(player, null);
+
+        this.provider.close(player);
     }
 
     public String getId() { return id; }
