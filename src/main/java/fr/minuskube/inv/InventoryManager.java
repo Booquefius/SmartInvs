@@ -226,10 +226,10 @@ public class InventoryManager {
 
             new BukkitRunnable() {
                 @Override public void run() {
-                    inventories.get(p.getUniqueId()).close(p);
+                    inventories.get(p.getUniqueId()).getProvider().close(p);
                 }
             }.runTaskLaterAsynchronously(SmartInvsPlugin.instance(), 1L);
-            
+
             if (inv.isCloseable()) {
                 e.getInventory().clear();
 
