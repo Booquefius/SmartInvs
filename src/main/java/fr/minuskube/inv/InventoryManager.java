@@ -228,7 +228,7 @@ public class InventoryManager {
                 @Override public void run() {
                     inventories.get(p.getUniqueId()).getProvider().close(p);
                 }
-            }.runTaskLaterAsynchronously(SmartInvsPlugin.manager().plugin, 1L);
+            }.runTask(plugin);
 
             if (inv.isCloseable()) {
                 e.getInventory().clear();
