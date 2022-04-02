@@ -241,7 +241,7 @@ public interface InventoryContents {
                 return;
 
             Inventory topInventory = currentPlayer.getOpenInventory().getTopInventory();
-            topInventory.setItem(inv.getColumns() * row + column, item);
+            topInventory.setItem((inv.getColumns() * row + column)-1, item);
         }
 
     }
