@@ -5,7 +5,8 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'signing'
 
-sourceCompatibility = 11
+sourceCompatibility = 16
+targetCompatibility = 16
 
 javadoc {
     options.links(
